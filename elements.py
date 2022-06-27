@@ -1,7 +1,7 @@
 import numpy as np
 
 class Tubular:
-    def __init__(self, name, inD, outD, weight, top, low, shoeSize = None, weigth = None, info = ""):
+    def __init__(self, name, inD, outD, top, low, shoeSize = None, weight = None, info = ""):
         self.name = name
         self.inD = inD
         self.outD = outD
@@ -10,14 +10,19 @@ class Tubular:
         self.totalLength = self.top - self.low
         self.weight = weight
         self.info = info
-        self.totalWeight = self.totalLength * self.weight
+        if weight is not None:
+            self.totalWeight = self.totalLength * self.weight
         self.thickness = self.outD - self.inD
         self.shoeSize = shoeSize
         self.shoeWidth = None
         if shoeSize is not None:
             self.shoeWidth = shoeSize - outD
-        self.summary = "{0}\nID = {1} in\nOD = {2} in\nFrom {3} ft to {4} ft\nWeight = {5} lb/ft\nShoe = {6} in\n{7}".format(
-            name, inD, outD, top, low, weight, shoeSize, info)
+        if name == "Openhole":
+            self.summary = "{0}\nDiameter = {2} in\nFrom {3} ft to {4} ft".format(
+                name, outD, top, low, info)
+        else:
+            self.summary = "{0}\nID = {1} in\nOD = {2} in\nFrom {3} ft to {4} ft\nWeight = {5} lb/ft\nShoe = {6} in\n{7}".format(
+                name, inD, outD, top, low, weight, shoeSize, info)
 
 class Cement:
     def __init__(self, top, low, tub0, tub1):

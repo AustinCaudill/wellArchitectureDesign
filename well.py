@@ -3,11 +3,11 @@ import matplotlib.pyplot as plt
 from datetime import date
 from matplotlib.patches import Rectangle
 #plt.rcParams["font.family"] = "Helvetica"
-plt.rcParams["font.size"] = 12
+plt.rcParams["font.size"] = 8
         
 class well:
     def __init__(self, name = None, topVerView = None, mdl = None, kop = None, bur = None, inc = None, 
-                 verStretchFactor = 1.05, horStretchFactor = 4):
+                 verStretchFactor = 1.15, horStretchFactor = 4):
         self.tubulars = {}
         self.cements = {}
         self.largestTub = 0
@@ -28,7 +28,7 @@ class well:
         try:
             assert tub.name not in self.tubulars.keys()
             self.tubulars[tub.name] = {"xy":np.array([tub.inD, tub.low]), "width":tub.thickness, "height":tub.totalLength, 
-                                       "outD": tub.outD, "summary": tub.summary, "low": tub.low, "shoeWidth":tub.shoeWidth}            
+                                       "outD": tub.outD, "summary": tub.summary, "low": tub.low, "shoeWidth":tub.shoeWidth, "name":tub.name}            
             if tub.outD > self.largestTub:
                 self.largestTub = tub.outD
             if tub.low > self.deepestTub:
@@ -49,11 +49,15 @@ class well:
     def visualize(self):
         stretchHorView = self.largestTub * self.horStretchFactor
         stretchVerView = self.deepestTub * self.verStretchFactor
-        self.fig, self.ax = plt.subplots(figsize = (8.27, 11.69))
+        self.fig, self.ax = plt.subplots(figsize = (8,11))
         # the tubulars
         for key, elem in self.tubulars.items():
-            self.ax.add_patch(Rectangle(elem["xy"], elem["width"], elem["height"], color = "black"))
-            self.ax.add_patch(Rectangle((-1*elem["xy"][0], elem["xy"][1]), -1*elem["width"], elem["height"], color = "black"))
+            if elem["name"] == "Openhole":
+                self.ax.add_patch(Rectangle(elem["xy"], elem["width"], elem["height"], color = "#C4A484"))
+                self.ax.add_patch(Rectangle((-1*elem["xy"][0], elem["xy"][1]), -1*elem["width"], elem["height"], color = "#C4A484"))
+            else:
+                self.ax.add_patch(Rectangle(elem["xy"], elem["width"], elem["height"], color = "black"))
+                self.ax.add_patch(Rectangle((-1*elem["xy"][0], elem["xy"][1]), -1*elem["width"], elem["height"], color = "black"))
             # showing tubular summaries
             if self.showTubularSummary == True:
                 xText = elem["outD"] + (0.075 * stretchHorView)
@@ -114,6 +118,8 @@ class well:
         # Plotting
         plt.title(self.name, loc = "center")
         plt.title(timestamp, loc = "left")
+        if self.kop is not None:
+            plt.title("DEVIATED", loc = "right", color="red")
         plt.tight_layout()
         plt.show()
 
