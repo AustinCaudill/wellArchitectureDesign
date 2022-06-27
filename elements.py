@@ -33,7 +33,7 @@ class Cement:
         self.horVals = np.array([leftWall, rightWall])
         self.topVals = [top, top]
         self.lowVals = [low, low]
-        self.summary = "cement from\n{0} ft to {1}ft".format(top, low)
+        self.summary = "Cement from\n{0} ft to {1}ft".format(top, low)
         
 class Packer:
     def __init__(self):
