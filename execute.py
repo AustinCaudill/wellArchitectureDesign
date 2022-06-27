@@ -6,7 +6,7 @@ t1 = Tubular(name = "Surface", inD = 6.25, outD = 6.75, weight = 47, top = 0, lo
 t2 = Tubular(name = "Intermediate", inD = 5.5, outD = 5.75, weight = 39, top = 0, low = 3750, shoeSize = 6, info = "")
 t3 = Tubular(name = "Production", inD = 4.75, outD = 5, weight = 39, top = 0, low = 5200, shoeSize = 5.25, info = "Possible HIC.")
 t4 = Tubular(name = "Liner", inD = 3.75, outD = 4, weight = 27, top = 4800, low = 6500, shoeSize = 4.5, info="")
-t5 = Tubular(name = "Openhole", inD = 0, outD = 4, top = 6500, low = 7200)
+t5 = Tubular(name = "Openhole", inD = 0, outD = 4, top = 6500, low = 6800)
 c0 = Cement(top = 0, low = 2000, tub0 = t0, tub1 = t1)
 c1 = Cement(top = 1800, low = 3750, tub0 = t2, tub1 = t1)
 c2 = Cement(top = 3500, low = 5200, tub0 = t2, tub1 = t3)

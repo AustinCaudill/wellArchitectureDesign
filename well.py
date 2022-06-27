@@ -61,7 +61,7 @@ class well:
             # showing tubular summaries
             if self.showTubularSummary == True:
                 xText = elem["outD"] + (0.075 * stretchHorView)
-                yText = elem["low"] * 0.85 
+                yText = elem["low"] * 1 
                 self.ax.text(xText, yText, elem["summary"], 
                              verticalalignment = "top", horizontalalignment = "left")
     

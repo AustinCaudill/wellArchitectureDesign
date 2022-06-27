@@ -18,7 +18,7 @@ class Tubular:
         if shoeSize is not None:
             self.shoeWidth = shoeSize - outD
         if name == "Openhole":
-            self.summary = "{0}\nDiameter = {2} in\nFrom {3} ft to {4} ft".format(
+            self.summary = "{0}\nDiameter = {1} in\nFrom {2} ft to {3} ft".format(
                 name, outD, top, low, info)
         else:
             self.summary = "{0}\nID = {1} in\nOD = {2} in\nFrom {3} ft to {4} ft\nWeight = {5} lb/ft\nShoe = {6} in\n{7}".format(
