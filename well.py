@@ -1,7 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from datetime import date
 from matplotlib.patches import Rectangle
-plt.rcParams["font.family"] = "Helvetica"
+#plt.rcParams["font.family"] = "Helvetica"
 plt.rcParams["font.size"] = 12
         
 class well:
@@ -105,7 +106,14 @@ class well:
             self.ax.annotate("Mudline at {} ft".format(self.mdl), xy = (-stretchHorView + 1, self.mdl - 25), color = mdlColor, alpha = 0.75)        
                 
         self.ax.invert_yaxis()
-        plt.title(self.name, loc = "left")
+
+        # Get Date
+        today = date.today()
+        timestamp = f"Date Created: {today}"
+
+        # Plotting
+        plt.title(self.name, loc = "center")
+        plt.title(timestamp, loc = "left")
         plt.tight_layout()
         plt.show()
 

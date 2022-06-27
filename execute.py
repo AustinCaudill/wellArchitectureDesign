@@ -10,7 +10,7 @@ c0 = Cement(top = 0, low = 2000, tub0 = t0, tub1 = t1)
 c1 = Cement(top = 1800, low = 3750, tub0 = t2, tub1 = t1)
 c2 = Cement(top = 3500, low = 5200, tub0 = t2, tub1 = t3)
 
-well0 = well(name = "Test Well 001", kop = 5000)
+well0 = well(name = "Caudill #14-A", kop = 5000)
 well0.addTubular(t0)
 well0.addTubular(t1)
 well0.addTubular(t2)
